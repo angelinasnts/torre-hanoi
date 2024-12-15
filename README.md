@@ -19,15 +19,15 @@
 # 1) Acesse o site
 $ https://www.tutorialspoint.com/compile_assembly_online.php
 
-# 2) Copie o código "" e cole no editor de texto do site
+# 2) Copie o código "./asm-python/Torre_Hanoi.asm" e cole no editor de texto do site
 
 # 3) Execute o projeto clicando no botão "Execute" no site
 ```
 <h2>Orientações</h2>
-Construa um programa em Assembly X86 sobre que resolva o quebra-cabeça clássico conhecido como Torre de Hanoi. A Torre de Hanoi é um jogo que envolve três torres A, B e C, contendo N discos com tamanhos diferentes dispostos em ordem decrescente de tamanho, estando o maior embaixo e o menor no topo da pilha. O objetivo deste jogo é mover todos os discos da Torre A para a Torre C, podendo usar a Torre B como auxiliar, seguindo a única regra essencial: nenhum disco maior pode ser colocado sobre um disco menor.
+Construa um programa em Assembly X86 sobre que resolva o quebra-cabeça clássico conhecido como Torre de Hanoi. A Torre de Hanoi é um jogo que envolve <strong>três torres A, B e C</strong>, contendo N discos com tamanhos diferentes dispostos em ordem decrescente de tamanho, estando o maior embaixo e o menor no topo da pilha. O objetivo deste jogo é mover todos os discos da Torre A para a Torre C, podendo usar a Torre B como auxiliar, seguindo a única regra essencial: nenhum disco maior pode ser colocado sobre um disco menor.
 
-Visualização:
-No link <a href="https://www.mathsisfun.com/games/towerofhanoi.html">https://www.mathsisfun.com/games/towerofhanoi.html</a>, você pode jogar ou ver a solução da Torre de Hanoi.
+<p><strong>Visualização:</strong>
+No link <a href="https://www.mathsisfun.com/games/towerofhanoi.html">https://www.mathsisfun.com/games/towerofhanoi.html</a>, você pode jogar ou ver a solução da Torre de Hanoi.</p>
 
 <h2>Especificação</h2>
 - Este projeto pode ser feito em dupla.

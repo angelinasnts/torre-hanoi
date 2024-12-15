@@ -1,5 +1,5 @@
 section .data
-    ; Mensagens para exibição ao usuário
+    ; Mensagens para exibição aos usuários
     HEADER db 'WELCOME TO TOWER OF HANOI', 0xa, 0    ; Mensagem de boas-vindas
     len_header equ $ - HEADER                        ; Tamanho da mensagem de boas-vindas
 

@@ -35,6 +35,7 @@ No link <a href="https://www.mathsisfun.com/games/towerofhanoi.html">https://www
 - A solução deve usar um procedimento recursivo.
 - O número de discos deve ser inserido pelo usuário e pode ter até dois algarismos, ou seja, seu programa deve ser capaz de ler este número.
 - O programa deve ser feito em Assembly X86 usando o compilador Tasm ou  Nasm para Windows ou Linux.
+
 <ul>
     <li>NASM</li>
     <ul>

@@ -15,6 +15,7 @@ Este projeto é referente a disciplina de <strong>Arquitetura de Computadores e 
 
 <h2>Como executar?</h2>
 Para executar o programa é muito fácil, basta seguir estas instruções:
+
 ```
 # 1) Acesse o site
 $ https://www.tutorialspoint.com/compile_assembly_online.php
@@ -23,6 +24,7 @@ $ https://www.tutorialspoint.com/compile_assembly_online.php
 
 # 3) Execute o projeto clicando no botão "Execute" no site
 ```
+
 <h2>Orientações</h2>
 Construa um programa em Assembly X86 sobre que resolva o quebra-cabeça clássico conhecido como Torre de Hanoi. A Torre de Hanoi é um jogo que envolve <strong>três torres A, B e C</strong>, contendo N discos com tamanhos diferentes dispostos em ordem decrescente de tamanho, estando o maior embaixo e o menor no topo da pilha. O objetivo deste jogo é mover todos os discos da Torre A para a Torre C, podendo usar a Torre B como auxiliar, seguindo a única regra essencial: nenhum disco maior pode ser colocado sobre um disco menor.
 

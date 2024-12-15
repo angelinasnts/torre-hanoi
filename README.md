@@ -3,14 +3,14 @@
   <img src="asm-python/execucao_hanoi.png" alt="Execução do código da torre de hanoi">
 </div>
 
-<h2>Índice</h2> 
-
-* [Sobre o Projeto](#sobre-o-Projeto)
-* [Como Executar?](#como-executar)
-* [Orientações](#orientações)
-* [Especificação](#especificação)
-* [Exemplo de Saída](#exemplo-de-saida)
-* [Contribuidoras](#contribuidoras)
+<p align="center">
+ <a href="#sobre-o-projeto">Sobre o Projeto</a> •
+ <a href="#como-executar">Como executar?</a> • 
+ <a href="#orientações">Orientações</a> • 
+ <a href="#especificação">Especificação</a> • 
+ <a href="#exemplo-de-saida">Exemplo de Saída</a> • 
+ <a href="#contribuidoras">Contribuidoras</a>
+</p>
 
 <h2>🖥️ Sobre o Projeto</h2>
 <p>Este projeto é referente a disciplina de <strong>Arquitetura de Computadores e Sistemas Operacionais</strong> do curso de Sistemas de Informação do Centro de Informática(CIN) da Universidade Federal de Pernambuco(UFPE), cursada no período letivo de 2024.2.</p>

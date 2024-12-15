@@ -1,5 +1,7 @@
 <h1 align="center">Torre de Hanoi em Assembly</h1>
-![Execução do código da torre de hanoi](execucao_hanoi.png)
+<div style="display: flex; justify-content: space-around;">
+  <img src="asm-python/execucao_hanoi.png" alt="Execução do código da torre de hanoi">
+</div>
 
 <p align="center">
     <a href="objetivo">Objetivo do Projeto</a>
@@ -11,7 +13,9 @@
 </p>
 
 <h2>Objetivo do Projeto</h2>
-Este projeto é referente a disciplina de <strong>Arquitetura de Computadores e Sistemas Operacionais</strong> do curso de Sistemas de Informação do Centro de Informática(CIN) da Universidade Federal de Pernambuco(UFPE), cursada no período letivo de 2024.2
+Este projeto é referente a disciplina de <strong>Arquitetura de Computadores e Sistemas Operacionais</strong> do curso de Sistemas de Informação do Centro de Informática(CIN) da Universidade Federal de Pernambuco(UFPE), cursada no período letivo de 2024.2.
+
+
 
 <h2>Como executar?</h2>
 Para executar o programa é muito fácil, basta seguir estas instruções:

@@ -53,6 +53,18 @@ No link <a href="https://www.mathsisfun.com/games/towerofhanoi.html">https://www
 </ul>
 <h2>Exemplo de saída do programa:</h2>
 ```
+# Algoritmo da Torre de Hanoi com 3 discos
+Mova disco 1 da Torre A para a Torre C
+Mova disco 2 da Torre A para a Torre B
+Mova disco 1 da Torre C para a Torre B
+Mova disco 3 da Torre A para a Torre C
+Mova disco 1 da Torre B para a Torre A
+Mova disco 2 da Torre B para a Torre C
+Mova disco 1 da Torre A para a Torre C
+Concluido!
+```
+
+```
 Algoritmo da Torre de Hanoi com 3 discos
 Mova disco 1 da Torre A para a Torre C
 Mova disco 2 da Torre A para a Torre B

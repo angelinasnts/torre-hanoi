@@ -1,161 +1,160 @@
 section .data
-    ; Mensagens para exibição aos usuários
-    HEADER db 'WELCOME TO TOWER OF HANOI', 0xa, 0    ; Mensagem de boas-vindas
-    len_header equ $ - HEADER                        ; Tamanho da mensagem de boas-vindas
+    ; Mensagem de boas-vindas e entrada do usuário
+    HEADER db 'WELCOME TO TOWER OF HANOI', 0xa, 0 
+    len_header equ $ - HEADER  ; Tamanho da mensagem de boas-vindas
 
     msg_for_user db 'Pick a number between 1 and 99, please: ', 0
-    len_msg_user equ $ - msg_for_user                ; Tamanho da mensagem de entrada do usuário
+    len_msg_user equ $ - msg_for_user ; Tamanho da mensagem para entrada do usuário
 
-    pula db '', 10                                   ; Nova linha
+    pula db '', 10
     len_p equ $ - pula
 
-    ; Identificadores das torres
-    Torre_inicial db 'A', 0, 10                      ; Nome da torre inicial
-    len_ti equ $ - Torre_inicial                     ; Tamanho da string da torre inicial
+    ; Nomes das Torres
+    Torre_inicial db 'A', 0, 10
+    len_ti equ $ - Torre_inicial
 
-    Torre_auxiliar db 'B', 0, 10                     ; Nome da torre auxiliar
-    len_ta equ $ - Torre_auxiliar                    ; Tamanho da string da torre auxiliar
+    Torre_auxiliar db 'B', 0, 10
+    len_ta equ $ - Torre_auxiliar
 
-    Torre_final db 'C', 0, 10                        ; Nome da torre final
-    len_tf equ $ - Torre_final                       ; Tamanho da string da torre final
+    Torre_final db 'C', 0, 10
+    len_tf equ $ - Torre_final
 
-    ; Mensagens sobre o estado do jogo
-    Iniciando db 'Starting Tower of Hanoi with '     ; Mensagem inicial
-    len_iniciando equ $ - Iniciando                 ; Tamanho da mensagem inicial
-    discos db ' disks:', 10, 0                      ; Complemento da mensagem inicial
-    len_d equ $ - discos                            ; Tamanho do complemento
+    ; Mensagens sobre discos
+    Iniciando db 'Starting Tower of Hanoi with '
+    len_iniciando equ $ - Iniciando
+    discos db ' disks:', 10, 0
+    len_d equ $ - discos
 
-    ; Mensagens para movimentação de discos
-    movimento_1 db 'Moving the disk', 0             ; Início da mensagem de movimentação
-    len_mov1 equ $ - movimento_1                    ; Tamanho da mensagem de movimentação
-    movimento_2 db ' from Tower '                   ; Mensagem intermediária
-    len_mov2 equ $ - movimento_2                    ; Tamanho da mensagem intermediária
-    movimento_3 db ' to Tower', 0                   ; Mensagem final
-    len_mov3 equ $ - movimento_3                    ; Tamanho da mensagem final
+    ; Mensagens de movimentação de discos
+    movimento_1 db 'Moving the disk', 0 
+    len_mov1 equ $ - movimento_1
+    movimento_2 db ' from Tower '
+    len_mov2 equ $ - movimento_2
+    movimento_3 db ' to Tower', 0
+    len_mov3 equ $ - movimento_3
 
     tam_num EQU 3  ; Espaço reservado para a entrada do usuário (até 3 caracteres)
 
 section .bss
-    ; Variáveis alocadas na memória não inicializada
-    input_user resb tam_num        ; Armazena a entrada do usuário
-    number_discos resb 3           ; Armazena o número de discos escolhido
-    buffer resb 16                 ; Buffer para conversão de número para string
+    input_user resb tam_num  ; Reserva espaço para a entrada do usuário
+    number_discos resb 3     ; Armazena o número de discos
+    buffer resb 16           ; Buffer para número convertido em string
 
 section .text
-    global _start                  ; Ponto de entrada do programa
+    global _start  ; Ponto de entrada do programa
 
 _start:
-    ; Exibição das mensagens iniciais
-    mov ecx, HEADER                ; Carrega a mensagem de boas-vindas
-    mov edx, len_header            ; Carrega o comprimento da mensagem
-    call mensage_bv_input          ; Exibe a mensagem de boas-vindas
+    ; Exibindo as mensagens iniciais
+    call mensage_bv_input
+    mov ecx, HEADER
+    mov edx, len_header
+    call mensage_bv_input
 
-    mov ecx, pula                  ; Adiciona uma nova linha
+    mov ecx, pula
     mov edx, len_p
-    call mensage_bv_input          ; Exibe a nova linha
+    call mensage_bv_input
 
-    mov ecx, msg_for_user          ; Solicita a entrada do usuário
+    mov ecx, msg_for_user
     mov edx, len_msg_user
-    call mensage_bv_input          ; Exibe a solicitação
+    call mensage_bv_input
 
-    ; Processa a entrada do usuário
-    call leitura_input             ; Lê a entrada do usuário
-    call process_convert_str_int   ; Converte a entrada para inteiro
+    ; Lê a entrada do usuário e converte para inteiro
+    call leitura_input
+    call process_convert_str_int
 
-    ; Exibe a configuração inicial do jogo
-    mov ecx, pula                  ; Adiciona uma nova linha
+    ; Exibe o número de discos
+    mov ecx, pula
     mov edx, len_p
-    call mensage_bv_input          ; Exibe a nova linha
+    call mensage_bv_input
 
-    mov ecx, Iniciando             ; Exibe a mensagem inicial
+    mov ecx, Iniciando
     mov edx, len_iniciando
-    call mensage_bv_input          ; Exibe a mensagem inicial
+    call mensage_bv_input
 
-    call print_disc                ; Exibe o número de discos selecionados
-    mov ecx, discos                ; Exibe o complemento da mensagem
+    call print_disc
+    mov ecx, discos
     mov edx, len_d
-    call mensage_bv_input          ; Exibe a mensagem completa
+    call mensage_bv_input
 
-    ; Resolve o problema das Torres de Hanoi
+    ; Resolve o problema da Torre de Hanoi
     call algoritm_tower
 
-    ; Encerra o programa
+    ; Finaliza o programa
     mov eax, 1
     xor ebx, ebx
     int 0x80
 
-; Funções auxiliares
 mensage_bv_input:
     ; Exibe uma mensagem na saída padrão
     ; ECX: Endereço da mensagem
-    ; EDX: Comprimento da mensagem
-    mov eax, 4                     ; Código do syscall para escrever
-    mov ebx, 1                     ; File descriptor para saída padrão
-    int 0x80                       ; Chamada ao kernel
-    ret                            ; Retorna da função
+    ; EDX: Tamanho da mensagem
+    mov eax, 4
+    mov ebx, 1
+    int 0x80
+    ret
 
 leitura_input:
     ; Lê a entrada do usuário
-    mov eax, 3                     ; Código do syscall para leitura
-    mov ebx, 0                     ; File descriptor para entrada padrão
-    mov ecx, input_user            ; Endereço do buffer de entrada
-    mov edx, tam_num               ; Comprimento máximo da entrada
-    int 0x80                       ; Chamada ao kernel
-    ret                            ; Retorna da função
-
-process_convert_str_int:
-    ; Converte a string de entrada para um número inteiro
-    xor eax, eax                   ; Zera o registrador acumulador
-    xor ecx, ecx                   ; Zera o contador de caracteres
-
-convert_loop:
-    movzx edx, byte [input_user + ecx] ; Lê o próximo caractere
-    cmp edx, 0x0A                      ; Verifica se é nova linha
-    je done_conversion                 ; Se sim, termina a conversão
-    sub edx, '0'                       ; Converte caractere para número
-    imul eax, eax, 10                  ; Multiplica o acumulador por 10
-    add eax, edx                       ; Adiciona o número ao acumulador
-    inc ecx                            ; Incrementa o índice
-    jmp convert_loop                   ; Continua o loop
-
-done_conversion:
-    mov [number_discos], eax           ; Armazena o número convertido
-    ret                                ; Retorna da função
+    mov eax, 3
+    mov ebx, 0
+    mov ecx, input_user
+    mov edx, tam_num
+    int 0x80
+    ret
 
 print_disc:
     ; Exibe o número de discos
-    movzx eax, word [number_discos]    ; Carrega o número de discos
-    lea edi, [buffer + 4]              ; Configura o buffer
-    call loop_str_int                  ; Converte número para string
+    movzx eax, word [number_discos]
+    lea edi, [buffer + 4]
+    call loop_str_int
 
-    mov eax, 4                         ; Syscall para exibir a string
-    mov ebx, 1                         ; Saída padrão
+    mov eax, 4
+    mov ebx, 1
     lea ecx, [edi]
     lea edx, [buffer + 4]
-    sub edx, ecx                       ; Calcula o comprimento da string
-    int 0x80                           ; Chamada ao kernel
-    ret                                ; Retorna da função
+    sub edx, ecx
+    int 0x80
+    ret
+
+process_convert_str_int:
+    ; Converte a string de entrada para um número inteiro
+    xor eax, eax
+    xor ecx, ecx
+
+convert_loop:
+    movzx edx, byte [input_user + ecx]
+    cmp edx, 0x0A
+    je done_conversion
+    sub edx, '0'
+    imul eax, eax, 10
+    add eax, edx
+    inc ecx
+    jmp convert_loop
+
+done_conversion:
+    mov [number_discos], eax
+    ret
 
 loop_str_int:
-    ; Converte um número inteiro para string
-    dec edi                            ; Move o índice para trás
-    xor edx, edx                       ; Zera o registrador EDX
-    mov ecx, 10                        ; Divisor base 10
-    div ecx                            ; Divide EAX por ECX
-    add dl, '0'                        ; Converte o dígito para caractere
-    mov [edi], dl                      ; Armazena o caractere no buffer
-    test eax, eax                      ; Verifica se EAX é zero
-    jnz loop_str_int                   ; Continua se não for zero
-    ret                                ; Retorna da função
+    ; Converte o número para string
+    dec edi
+    xor edx, edx
+    mov ecx, 10
+    div ecx
+    add dl, '0'
+    mov [edi], dl
+    test eax, eax
+    jnz loop_str_int
+    ret
 
 algoritm_tower:
-    ; Implementa o algoritmo das Torres de Hanoi
+    ; Algoritmo recursivo da Torre de Hanoi
     cmp word [number_discos], 1
-    je caso_b                          ; Se 1 disco, caso base
-    jmp recursao                       ; Caso contrário, recursão
+    je caso_b
+    jmp recursao
 
 caso_b:
-    ; Caso base: movimenta 1 disco
+    ; Caso base (1 disco)
     mov ecx, movimento_1
     mov edx, len_mov1
     call mensage_bv_input
@@ -176,7 +175,7 @@ caso_b:
     mov ecx, Torre_final
     mov edx, len_tf
     call mensage_bv_input
-    ret                                ; Retorna ao terminar
+    jmp done_tower
 
 recursao:
     ; Passo recursivo para resolver o problema com mais de 1 disco

@@ -1,10 +1,21 @@
-<h1 align="center">Torre de Hanoi em Assembly</h1>
+<h1 align="center">🗼Torre de Hanói em Assembly</h1>
 <div style="display: flex; justify-content: space-around;">
   <img src="asm-python/execucao_hanoi.png" alt="Execução do código da torre de hanoi">
 </div>
 
+# Índice 
+
+* [Sobre o Projeto](#sobre-o-Projeto)
+* [Como Executar?](#como-executar)
+* [Orientações](#orientações)
+* [Especificação](#especificação)
+* [Exemplo de Saída](#exemplo-de-saida)
+* [Contribuidores](#contribuidores)
+
+
+
 <p align="center">
-    <a href="objetivo">Objetivo do Projeto</a>
+    <a href="projeto">Sobre o Projeto</a>
     <a href="executar">Como executar?</a>
     <a href="orientacoes">Orientações</a>
     <a href="especificacao">Especificação</a>
@@ -12,12 +23,12 @@
     <a href="contribuidores">Contribuidores</a>
 </p>
 
-<h2>Objetivo do Projeto</h2>
+<h2>🖥️ Sobre o Projeto</h2>
 Este projeto é referente a disciplina de <strong>Arquitetura de Computadores e Sistemas Operacionais</strong> do curso de Sistemas de Informação do Centro de Informática(CIN) da Universidade Federal de Pernambuco(UFPE), cursada no período letivo de 2024.2.
 
+O projeto visa resolver o problema da Torre de Hanói em Assembly, onde três pinos e discos de tamanhos diferentes devem ser manipulados. O objetivo é mover todos os discos de um pino para outro, usando um pino auxiliar, obedecendo à regra de que discos maiores não podem ser colocados sobre discos menores. A solução será baseada em recursão.
 
-
-<h2>Como executar?</h2>
+<h2>🛠️ Como executar?</h2>
 Para executar o programa é muito fácil, basta seguir estas instruções:
 
 ```
@@ -29,15 +40,15 @@ $ https://www.tutorialspoint.com/compile_assembly_online.php
 # 3) Execute o projeto clicando no botão "Execute" no site
 ```
 
-<h2>Orientações</h2>
+<h2>✍️ Orientações</h2>
 Construa um programa em Assembly X86 sobre que resolva o quebra-cabeça clássico conhecido como Torre de Hanoi. A Torre de Hanoi é um jogo que envolve <strong>três torres A, B e C</strong>, contendo N discos com tamanhos diferentes dispostos em ordem decrescente de tamanho, estando o maior embaixo e o menor no topo da pilha. O objetivo deste jogo é mover todos os discos da Torre A para a Torre C, podendo usar a Torre B como auxiliar, seguindo a única regra essencial: nenhum disco maior pode ser colocado sobre um disco menor.
 
 <h3><strong>Visualização:</strong></h3>
 No link <a href="https://www.mathsisfun.com/games/towerofhanoi.html">https://www.mathsisfun.com/games/towerofhanoi.html</a>, você pode jogar ou ver a solução da Torre de Hanoi.</p>
 
-<h2>Especificação</h2>
+<h2>🧨 Especificação</h2>
 <ul>
-    <li>ste projeto pode ser feito em dupla.</li>
+    <li>Este projeto pode ser feito em dupla.</li>
     <li>A entrega se dará de forma presencial, apresentando e explicando o código em execução.</li>
     <li>A solução deve usar um procedimento recursivo.</li>
     <li>O número de discos deve ser inserido pelo usuário e pode ter até dois algarismos, ou seja, seu programa deve ser capaz de ler este número.</li>
@@ -60,7 +71,7 @@ No link <a href="https://www.mathsisfun.com/games/towerofhanoi.html">https://www
 </ul>
 </ul>
 
-<h2>Exemplo de saída do programa:</h2>
+<h2>👩‍💻 Exemplo de saída do programa:</h2>
 
 ```
 Algoritmo da Torre de Hanoi com 3 discos
@@ -74,4 +85,4 @@ Mova disco 1 da Torre A para a Torre C
 Concluido!
 ```
 
-<h2>Contribuidores</h2>
+<h2>👯 Contribuidores</h2>

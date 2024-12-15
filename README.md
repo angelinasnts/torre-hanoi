@@ -3,30 +3,19 @@
   <img src="asm-python/execucao_hanoi.png" alt="Execução do código da torre de hanoi">
 </div>
 
-# Índice 
+<h2>Índice</h2> 
 
 * [Sobre o Projeto](#sobre-o-Projeto)
 * [Como Executar?](#como-executar)
 * [Orientações](#orientações)
 * [Especificação](#especificação)
 * [Exemplo de Saída](#exemplo-de-saida)
-* [Contribuidores](#contribuidores)
-
-
-
-<p align="center">
-    <a href="projeto">Sobre o Projeto</a>
-    <a href="executar">Como executar?</a>
-    <a href="orientacoes">Orientações</a>
-    <a href="especificacao">Especificação</a>
-    <a href="exemplo">Exemplo de Saída:</a>
-    <a href="contribuidores">Contribuidores</a>
-</p>
+* [Contribuidoras](#contribuidoras)
 
 <h2>🖥️ Sobre o Projeto</h2>
-Este projeto é referente a disciplina de <strong>Arquitetura de Computadores e Sistemas Operacionais</strong> do curso de Sistemas de Informação do Centro de Informática(CIN) da Universidade Federal de Pernambuco(UFPE), cursada no período letivo de 2024.2.
+<p>Este projeto é referente a disciplina de <strong>Arquitetura de Computadores e Sistemas Operacionais</strong> do curso de Sistemas de Informação do Centro de Informática(CIN) da Universidade Federal de Pernambuco(UFPE), cursada no período letivo de 2024.2.</p>
 
-O projeto visa resolver o problema da Torre de Hanói em Assembly, onde três pinos e discos de tamanhos diferentes devem ser manipulados. O objetivo é mover todos os discos de um pino para outro, usando um pino auxiliar, obedecendo à regra de que discos maiores não podem ser colocados sobre discos menores. A solução será baseada em recursão.
+<p>O projeto visa resolver o problema da Torre de Hanói em Assembly, onde três pinos e discos de tamanhos diferentes devem ser manipulados. O objetivo é mover todos os discos de um pino para outro, usando um pino auxiliar, obedecendo à regra de que discos maiores não podem ser colocados sobre discos menores. A solução será baseada em recursão.</p>
 
 <h2>🛠️ Como executar?</h2>
 Para executar o programa é muito fácil, basta seguir estas instruções:
@@ -85,4 +74,4 @@ Mova disco 1 da Torre A para a Torre C
 Concluido!
 ```
 
-<h2>👯 Contribuidores</h2>
+<h2>👯 Contribuidoras</h2>

@@ -73,13 +73,3 @@ Mova disco 2 da Torre B para a Torre C
 Mova disco 1 da Torre A para a Torre C
 Concluido!
 ```
-
-<h2>👯 Contribuidoras</h2>
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->

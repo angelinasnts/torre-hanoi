@@ -36,8 +36,8 @@ section .data
     tam_num EQU 3  ; Espaço reservado para a entrada do usuário (até 3 caracteres)
 
 section .bss
-    input_user resb tam_num  ; Reserva espaço para a entrada do usuário
-    number_discos resb 3     ; Armazena o número de discos
+    data_input resb tam_num  ; Reserva espaço para a entrada do usuário
+    number_disks resb 3     ; Armazena o número de discos
     buffer resb 16           ; Buffer para número convertido em string
 
 section .text
@@ -45,18 +45,18 @@ section .text
 
 _start:
     ; Exibindo as mensagens iniciais
-    call mensage_bv_input
+    call bv_input
     mov ecx, HEADER
     mov edx, len_header
-    call mensage_bv_input
+    call bv_input
 
     mov ecx, pula
     mov edx, len_p
-    call mensage_bv_input
+    call bv_input
 
     mov ecx, msg_for_user
     mov edx, len_msg_user
-    call mensage_bv_input
+    call bv_input
 
     ; Lê a entrada do usuário e converte para inteiro
     call leitura_input
@@ -65,16 +65,16 @@ _start:
     ; Exibe o número de discos
     mov ecx, pula
     mov edx, len_p
-    call mensage_bv_input
+    call bv_input
 
     mov ecx, Iniciando
     mov edx, len_iniciando
-    call mensage_bv_input
+    call bv_input
 
-    call print_disc
+    call print_disk
     mov ecx, discos
     mov edx, len_d
-    call mensage_bv_input
+    call bv_input
 
     ; Resolve o problema da Torre de Hanoi
     call algoritm_tower
@@ -84,7 +84,7 @@ _start:
     xor ebx, ebx
     int 0x80
 
-mensage_bv_input:
+bv_input:
     ; Exibe uma mensagem na saída padrão
     ; ECX: Endereço da mensagem
     ; EDX: Tamanho da mensagem
@@ -97,14 +97,14 @@ leitura_input:
     ; Lê a entrada do usuário
     mov eax, 3
     mov ebx, 0
-    mov ecx, input_user
+    mov ecx, data_input
     mov edx, tam_num
     int 0x80
     ret
 
-print_disc:
+print_disk:
     ; Exibe o número de discos
-    movzx eax, word [number_discos]
+    movzx eax, word [number_disks]
     lea edi, [buffer + 4]
     call loop_str_int
 
@@ -122,7 +122,7 @@ process_convert_str_int:
     xor ecx, ecx
 
 convert_loop:
-    movzx edx, byte [input_user + ecx]
+    movzx edx, byte [data_input + ecx]
     cmp edx, 0x0A
     je done_conversion
     sub edx, '0'
@@ -132,7 +132,7 @@ convert_loop:
     jmp convert_loop
 
 done_conversion:
-    mov [number_discos], eax
+    mov [number_disks], eax
     ret
 
 loop_str_int:
@@ -149,7 +149,7 @@ loop_str_int:
 
 algoritm_tower:
     ; Algoritmo recursivo da Torre de Hanoi
-    cmp word [number_discos], 1
+    cmp word [number_disks], 1
     je caso_b
     jmp recursao
 
@@ -157,30 +157,30 @@ caso_b:
     ; Caso base (1 disco)
     mov ecx, movimento_1
     mov edx, len_mov1
-    call mensage_bv_input
+    call bv_input
 
-    call print_disc
+    call print_disk
     mov ecx, movimento_2
     mov edx, len_mov2
-    call mensage_bv_input
+    call bv_input
 
     mov ecx, Torre_inicial
     mov edx, len_ti
-    call mensage_bv_input
+    call bv_input
 
     mov ecx, movimento_3
     mov edx, len_mov3
-    call mensage_bv_input
+    call bv_input
 
     mov ecx, Torre_final
     mov edx, len_tf
-    call mensage_bv_input
+    call bv_input
     jmp done_tower
 
 recursao:
     ; Passo recursivo para resolver o problema com mais de 1 disco
-    dec byte [number_discos]          ; Decrementa o número de discos (prepara para a chamada recursiva)
-    push word [number_discos]         ; Empilha o valor atual de [number_discos] para preservar o estado
+    dec byte [number_disks]          ; Decrementa o número de discos (prepara para a chamada recursiva)
+    push word [number_disks]         ; Empilha o valor atual de [number_disks] para preservar o estado
     push word [Torre_inicial]         ; Empilha o endereço da torre inicial
     push word [Torre_auxiliar]        ; Empilha o endereço da torre auxiliar
     push word [Torre_final]           ; Empilha o endereço da torre final
@@ -198,33 +198,33 @@ recursao:
     pop word [Torre_auxiliar]         ; Restaura o valor de Torre_auxiliar
     pop word [Torre_inicial]          ; Restaura o valor de Torre_inicial
 
-    pop word [number_discos]          ; Restaura o valor original de [number_discos]
+    pop word [number_disks]          ; Restaura o valor original de [number_disks]
 
     ; Exibe a mensagem de movimentação do disco
     mov ecx, movimento_1              ; Carrega a mensagem "Movendo o disco" no registrador ECX
     mov edx, len_mov1                 ; Carrega o comprimento da mensagem
-    call mensage_bv_input             ; Exibe a mensagem
+    call bv_input             ; Exibe a mensagem
 
-    inc byte [number_discos]          ; Incrementa o número de discos para a visualização
-    call print_disc                   ; Chama a função para exibir o disco movido
-    dec byte [number_discos]          ; Decrementa novamente para manter a consistência
+    inc byte [number_disks]          ; Incrementa o número de discos para a visualização
+    call print_disk                   ; Chama a função para exibir o disco movido
+    dec byte [number_disks]          ; Decrementa novamente para manter a consistência
 
     ; Exibe a mensagem de origem e destino do disco
     mov ecx, movimento_2              ; Carrega a mensagem "da torre" no registrador ECX
     mov edx, len_mov2                 ; Carrega o comprimento da mensagem
-    call mensage_bv_input             ; Exibe a mensagem
+    call bv_input             ; Exibe a mensagem
 
     mov ecx, Torre_inicial            ; Carrega a torre inicial no registrador ECX
     mov edx, len_ti                   ; Carrega o comprimento da mensagem
-    call mensage_bv_input             ; Exibe a torre inicial
+    call bv_input             ; Exibe a torre inicial
 
     mov ecx, movimento_3              ; Carrega a mensagem "para a torre" no registrador ECX
     mov edx, len_mov3                 ; Carrega o comprimento da mensagem
-    call mensage_bv_input             ; Exibe a mensagem
+    call bv_input             ; Exibe a mensagem
 
     mov ecx, Torre_final              ; Carrega a torre final no registrador ECX
     mov edx, len_tf                   ; Carrega o comprimento da mensagem
-    call mensage_bv_input             ; Exibe a torre final
+    call bv_input             ; Exibe a torre final
 
     ; Troca novamente os valores das torres para continuar o processo recursivo
     mov dx, [Torre_auxiliar]          ; Carrega o valor de Torre_auxiliar em DX
@@ -236,3 +236,4 @@ recursao:
 
 done_tower:
     ret
+    
